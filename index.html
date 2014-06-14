@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dane Gaydosh</title>
+    <link rel="stylesheet" href="main.css"/>
+</head>
+<body>
+
+<nav class="nav">
+    <ul class="nav-menu">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#info">Info</a></li>
+        <li><a href="#stuff">Stuff</a></li>
+    </ul>
+</nav>
+
+<section class="main">
+    <section id="work" class="content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur autem commodi dignissimos distinctio, eveniet, excepturi laborum natus nihil non numquam porro quaerat qui quo quod sequi, similique suscipit vel voluptatem.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium amet culpa dolor ducimus, ea est reprehenderit! At blanditiis facilis incidunt ipsum magni nihil perferendis qui, reiciendis sapiente tenetur, voluptatem!</p>
+    </section>
+
+    <section id="info" class="content">
+        <p>Info blah blah. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur autem commodi dignissimos distinctio, eveniet, excepturi laborum natus nihil non numquam porro quaerat qui quo quod sequi, similique suscipit vel voluptatem.</p>
+    </section>
+
+    <section id="stuff" class="content">
+        <p>Stuff blah blah. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur autem commodi dignissimos distinctio, eveniet, excepturi laborum natus nihil non numquam porro quaerat qui quo quod sequi, similique suscipit vel voluptatem.</p>
+    </section>
+</section>
+
+<footer>
+    Footer
+</footer>
+
+</body>
+<script>
+    // TODO: Find a way to avoid this
+    (function(location) {
+        // If there's no target, force the first menu item
+        if(location.hash === '') {
+            var first = document.querySelector('.content');
+            if(first && first.id) {
+                location.hash = '#' + first.id;
+            }
+        }
+    }(location));
+</script>
+</html>
