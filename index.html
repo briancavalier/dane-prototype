@@ -16,18 +16,23 @@
 </nav>
 
 <section class="main">
-    <section id="work" class="content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur autem commodi dignissimos distinctio, eveniet, excepturi laborum natus nihil non numquam porro quaerat qui quo quod sequi, similique suscipit vel voluptatem.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium amet culpa dolor ducimus, ea est reprehenderit! At blanditiis facilis incidunt ipsum magni nihil perferendis qui, reiciendis sapiente tenetur, voluptatem!</p>
-    </section>
+    <div class="reveal-container">
+        <section id="work" class="content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur autem commodi dignissimos distinctio, eveniet, excepturi laborum natus nihil non numquam porro quaerat qui quo quod sequi, similique suscipit vel voluptatem.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium amet culpa dolor ducimus, ea est reprehenderit! At blanditiis facilis incidunt ipsum magni nihil perferendis qui, reiciendis sapiente tenetur, voluptatem!</p>
+        </section>
 
-    <section id="info" class="content">
-        <p>Info blah blah. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur autem commodi dignissimos distinctio, eveniet, excepturi laborum natus nihil non numquam porro quaerat qui quo quod sequi, similique suscipit vel voluptatem.</p>
-    </section>
+        <section id="info" class="content">
+            <p>Info blah blah. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur autem commodi dignissimos distinctio, eveniet, excepturi laborum natus nihil non numquam porro quaerat qui quo quod sequi, similique suscipit vel voluptatem.</p>
+        </section>
 
-    <section id="stuff" class="content">
-        <p>Stuff blah blah. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur autem commodi dignissimos distinctio, eveniet, excepturi laborum natus nihil non numquam porro quaerat qui quo quod sequi, similique suscipit vel voluptatem.</p>
-    </section>
+        <section id="stuff" class="content">
+            <p>Stuff blah blah. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur autem commodi dignissimos distinctio, eveniet, excepturi laborum natus nihil non numquam porro quaerat qui quo quod sequi, similique suscipit vel voluptatem.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab consectetur consequatur delectus dolorum ex impedit, odio omnis perspiciatis possimus, quisquam repellat voluptate voluptates! Dignissimos esse illo iure quam quia.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, aliquam beatae earum provident sapiente totam. Consequatur dicta eos excepturi impedit, maiores nemo nesciunt nobis quaerat veniam voluptatem. Fugit iste, tempora?</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium culpa id illo illum officia repellendus vel. Atque, dolore dolorem id illum itaque non quia quod quos sint, ut vel veritatis?</p>
+        </section>
+    </div>
 </section>
 
 <footer>
@@ -36,8 +41,23 @@
 
 </body>
 <script>
-    // TODO: Find a way to avoid this
-    (function(location) {
+    // TODO: Hacky, but good enough for prototyping
+    (function(window) {
+        // This works by manually adding a removing a class to trigger an
+        // animation when the hash changes.
+        // A better way would be to use a true keyframe animation that takes
+        // the height from it's starting point to zero and then back.
+        window.addEventListener('hashchange', function() {
+            if(location.hash.length > 1) {
+                var el = document.querySelector('.reveal-container');
+                el.classList.add('close');
+                setTimeout(function() {
+                    el.classList.remove('close');
+                }, 400); // .4 seconds, must match the transition time/delay in the css
+            }
+        }, false);
+
+        var location = window.location;
         // If there's no target, force the first menu item
         if(location.hash === '') {
             var first = document.querySelector('.content');
@@ -45,6 +65,6 @@
                 location.hash = '#' + first.id;
             }
         }
-    }(location));
+    }(window));
 </script>
 </html>

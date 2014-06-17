@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     list-style-type: none;
+    height: 2em;
 }
 
 .nav-menu li {
@@ -10,11 +11,23 @@
 }
 
 .main {
-    border-top: 2px solid black;
-    position: relative;
     overflow: hidden;
-    height: auto;
-    min-height: 20em;
+    height: 100%;
+}
+
+.reveal-container {
+    position: relative;
+    overflow-y: auto;
+    height: 20em;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    /* transition the height in .4 seconds, with no initial delay */
+    transition: height .4s;
+    -webkit-transition: height .4s;
+}
+
+.reveal-container.close {
+    height: 0;
 }
 
 .content {
@@ -22,26 +35,16 @@
     margin: 0;
     position: absolute;
     overflow: hidden;
-    height: auto;
-    min-height: 20em;
     background: none;
+    height: auto;
     opacity: 0;
-    border-bottom: 2px solid black;
-    transform: translateY(-1000px);
-    transition: transform 1s, opacity 1s, height 1s;
-    -webkit-transform: translateY(-1000px);
-    -webkit-transition: -webkit-transform 1s, opacity 1s, height 1s;
-    -moz-transform: translateY(-1000px);
-    -moz-transition: -moz-transform 1s, opacity 1s, height 1s;
-    -ms-transform: translateY(-1000px);
-    -ms-transition: -ms-transform 1s, opacity 1s, height 1s;
+    /* transition opacity after a .4s delay, but the transition
+       itself is instantaneous. The delay here should match
+       the height transition time above */
+    transition: opacity 0 .4s;
+    -webkit-transition: opacity 0 .4s;
 }
 
 .content:target {
-    transform: translateY(0);
-    -webkit-transform: translateY(0);
-    moz-transform: translateY(0);
-    -ms-transform: translateY(0);
-    position: relative;
     opacity: 1;
 }
